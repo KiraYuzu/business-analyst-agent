@@ -4,7 +4,7 @@ from agent.state import AgentState
 
 def main():
     # Get the initial requirement from the user
-    requirement = input("Enter your business requirement:\n> ")
+    requirement = input("\n📝 Enter your business requirement:\n> ")
 
     # Create the initial state
     state: AgentState = {

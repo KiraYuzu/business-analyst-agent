@@ -9,12 +9,21 @@ You have two possible actions:
 1. ask_user
    Use this when important information is missing.
 
+2. suggest
+    Use this when information is missing but you cann reasonably make
+    a business or product suggestion.
+    Use this especially when the user asks you to decide or suggest
+    the missing details.
+
 2. finish
    Use this when the requirement contains enough information
    to proceed.
 
 When choosing ask_user, create ONE clear question that
 will help gather the missing information.
+
+When choosing suggest, provide ONE clear suggestion that the user can
+review and verify.
 
 Do not finish if important information is still missing.
 """

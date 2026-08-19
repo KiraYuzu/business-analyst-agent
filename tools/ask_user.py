@@ -4,4 +4,4 @@ def ask_user(question: str) -> str:
     It takes a single argument, 'question', which is a string containing the question to be asked.
     The function returns the user's response as a string.
     """
-    return input(question + "\nYour answer: ")
+    return input(f"\n🤖 {question}\n👤 Your answer: ")
