@@ -2,6 +2,14 @@
 venv/
 .venv/
 
+# ChromaDB 
+chromadb/
+.chromadb/
+
+# Data
+data/
+.data/
+
 # Environment variables / secrets
 .env
 .env.*
@@ -20,3 +28,7 @@ __pycache__/
 
 # Logs
 *.log
+
+# Debug JSON
+collection_contents.json
+debug_state.json

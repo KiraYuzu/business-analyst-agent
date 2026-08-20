@@ -8,12 +8,13 @@ from datetime import datetime
 from agent.prompts import SYSTEM_PROMPT
 from tools.ask_user import ask_user
 from tools.suggest import suggest
+from tools.search_docs import search_document
 
 load_dotenv()
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-AVAILABLE_ACTIONS = ["ask_user", "suggest", "finish"]
+AVAILABLE_ACTIONS = ["ask_user", "suggest", "search_document", "finish"]
 
 ## Define the decision schema for the LLM's response
 DECISION_SCHEMA = {
@@ -31,13 +32,17 @@ DECISION_SCHEMA = {
         },
         "suggestion": {
             "type": "string"
+        },
+        "search_query": {
+            "type": "string"
         }
     },
     "required": [
         "action",
         "reason",
         "question",
-        "suggestion"
+        "suggestion",
+        "search_query"
     ],
     "additionalProperties": False
 }
@@ -71,7 +76,7 @@ def ask_llm(state):
     # print(f"LLM Output: {llm_output}")  # Debugging line to see the raw output from the LLM
     return json.loads(llm_output)
 
-def update_state(state, action, reason, question=None, suggestion=None):
+def update_state(state, action, reason, question=None, suggestion=None, search_query=None):
     """
     This function updates the agent's state based on the action taken by the LLM.
     It modifies the 'status' and 'conversation_history' fields of the state.
@@ -81,13 +86,16 @@ def update_state(state, action, reason, question=None, suggestion=None):
         "action": action,
         "reason": reason,
         "question": question,
-        "suggestion": suggestion
+        "suggestion": suggestion,
+        "search_query": search_query
     })
 
     if action == "ask_user":
         state["status"] = "NEED_CLARIFICATION"
     elif action == "suggest":
         state["status"] = "SUGGESTION_GIVEN"
+    elif action == "search_document":
+        state["status"] = "SEARCH_DOCUMENTS"
     elif action == "finish":
         state["status"] = "REQUIREMENT_COMPLETE"
         state["completed"] = True
@@ -108,8 +116,10 @@ def run_agent(state):
         reason = decision["reason"]
         question = decision.get("question")
         suggestion = decision.get("suggestion")
+        search_query = decision.get("search_query")
 
-        state = update_state(state, action, reason, question, suggestion)
+
+        state = update_state(state, action, reason, question, suggestion, search_query)
 
         # 2. Execute the selected action
         if action == "ask_user" and question:
@@ -127,6 +137,14 @@ def run_agent(state):
             state["conversation_history"].append({
                 "suggestion": suggestion,
                 "user_response": user_response
+            })
+
+        elif action == "search_document" and search_query:
+            query_result = search_document(search_query)
+
+            state["conversation_history"].append({
+                "search_query": search_query,
+                "search_result": query_result
             })
 
         # Save the current state to a debug file for inspection

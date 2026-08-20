@@ -1,2 +1,7 @@
 openai
 python-dotenv
+pypdf
+scikit-learn
+spacy
+chromadb
+sentence-transformers

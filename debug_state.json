@@ -1,42 +1,84 @@
 {
-    "requirement": "give me a simple blueprint idea",
+    "requirement": "I want to create a leave management system. The leave rules should be based on my company documents.",
     "status": "REQUIREMENT_COMPLETE",
     "conversation_history": [
         {
-            "action": "ask_user",
-            "reason": "The request for a 'simple blueprint idea' lacks specific context or direction. It's unclear what type of blueprint is needed and for what purpose.",
-            "question": "What type of blueprint are you looking for (e.g., architectural, business plan, marketing strategy) and what is its intended purpose?",
-            "suggestion": ""
+            "action": "search_document",
+            "reason": "Specific leave rules and guidelines are needed from company documents to define the leave management system properly.",
+            "question": "",
+            "suggestion": "",
+            "search_query": "Company leave policies and rules for leave management system implementation."
+        },
+        {
+            "search_query": "Company leave policies and rules for leave management system implementation.",
+            "search_result": [
+                {
+                    "text": "Revision of leave entitlement shall be at the sole discretion \nof the company which you shall comply accordingly. 8.",
+                    "source": "Letter of Appointment_Rayson Ng.pdf",
+                    "chunk_index": 16
+                },
+                {
+                    "text": "7. Upon completion of 3-month service, you are entitled to 17 working days of annual leave per annum for the first \n5 years of service and thereafter 20 days per annum. Revision of leave entitlement shall be at the sole discretion \nof the company which you shall comply accordingly.",
+                    "source": "Letter of Appointment_Rayson Ng.pdf",
+                    "chunk_index": 15
+                },
+                {
+                    "text": "Earned leave shall not be used to offset against the period of such notice except with the approval of the \nCompany. 20.",
+                    "source": "Letter of Appointment_Rayson Ng.pdf",
+                    "chunk_index": 43
+                }
+            ]
         },
         {
             "action": "ask_user",
-            "response": "marketing strategy"
+            "reason": "The specific details on how the leave rules are determined and any additional criteria for leave management are still unclear.",
+            "question": "What specific leave rules and criteria from the company documents do you want to implement in the leave management system?",
+            "suggestion": "",
+            "search_query": ""
         },
         {
             "action": "ask_user",
-            "reason": "While a marketing strategy blueprint has been specified, details on the target audience, goals, and specific channels are still missing.",
-            "question": "What is the target audience for your marketing strategy, and what specific goals do you want to achieve with this blueprint?",
-            "suggestion": ""
+            "response": "what are the options?"
         },
         {
             "action": "ask_user",
-            "response": "can you give me the full project plan so i can just copy and finish this convo? you can decide everything yourself"
+            "reason": "The specific details on what options you are considering for the leave rules and criteria in the management system are still unclear.",
+            "question": "What specific options for leave rules do you want to implement in the leave management system (e.g., annual leave, sick leave, casual leave, etc.)?",
+            "suggestion": "",
+            "search_query": ""
+        },
+        {
+            "action": "ask_user",
+            "response": "can give me some options?"
         },
         {
             "action": "suggest",
-            "reason": "The user has asked for a full project plan for a marketing strategy and expressed willingness to let me decide the details.",
+            "reason": "While specific options for leave types are still needed, I can provide common categories that are typically found in leave management systems.",
             "question": "",
-            "suggestion": "I suggest creating a marketing strategy blueprint that targets millennials, aiming to increase brand awareness by 20% over the next six months through social media advertising, influencer partnerships, and email marketing campaigns."
+            "suggestion": "You may want to consider implementing the following leave options in your management system: annual leave, sick leave, casual leave, maternity leave, and bereavement leave. Please review these options and let me know which ones you would like to include.",
+            "search_query": ""
         },
         {
-            "suggestion": "I suggest creating a marketing strategy blueprint that targets millennials, aiming to increase brand awareness by 20% over the next six months through social media advertising, influencer partnerships, and email marketing campaigns.",
+            "suggestion": "You may want to consider implementing the following leave options in your management system: annual leave, sick leave, casual leave, maternity leave, and bereavement leave. Please review these options and let me know which ones you would like to include.",
             "user_response": "yes"
         },
         {
+            "action": "ask_user",
+            "reason": "The implementation of the leave management system still requires details on the specific leave types you want to include and any additional criteria for each type.",
+            "question": "Which specific leave types from the options provided (annual leave, sick leave, casual leave, maternity leave, and bereavement leave) do you want to implement, and are there any additional criteria for these leaves that need to be considered?",
+            "suggestion": "",
+            "search_query": ""
+        },
+        {
+            "action": "ask_user",
+            "response": "done"
+        },
+        {
             "action": "finish",
-            "reason": "The requirement now contains enough information to proceed with the marketing strategy blueprint.",
+            "reason": "The requirement now includes specific leave types and options based on discussions, along with insights from company documents.",
             "question": "",
-            "suggestion": ""
+            "suggestion": "",
+            "search_query": ""
         }
     ],
     "completed": true
