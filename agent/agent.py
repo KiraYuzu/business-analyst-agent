@@ -9,6 +9,7 @@ from agent.prompts import SYSTEM_PROMPT
 from tools.ask_user import ask_user
 from tools.suggest import suggest
 from tools.search_docs import search_document
+from config import LOG_FOLDER
 
 load_dotenv()
 
@@ -48,7 +49,7 @@ DECISION_SCHEMA = {
 }
 
 def save_debug_state(state):
-    with open("debug_state.json", "w") as file:
+    with open(LOG_FOLDER / "debug_state.json", "w") as file:
         json.dump(state, file, indent=4)
 
 def ask_llm(state):

@@ -2,6 +2,7 @@ import chromadb
 import json
 
 from rag.embedding import get_embeddings
+from config import LOG_FOLDER
 
 client = chromadb.PersistentClient(path='./chromadb')
 collection = client.get_or_create_collection(
@@ -62,7 +63,7 @@ def view_database():
         print(results["documents"][i][-300:])
 
     # Save to JSON
-    with open("collection_contents.json", "w", encoding="utf-8") as f:
+    with open(LOG_FOLDER / "collection_contents.json", "w", encoding="utf-8") as f:
         json.dump(database_log, f, indent=4, ensure_ascii=False)
 
     print("\nDatabase log saved to collection_contents.json")

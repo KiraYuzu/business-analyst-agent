@@ -26,9 +26,6 @@ __pycache__/
 # macOS
 .DS_Store
 
-# Logs
-*.log
-
 # Debug JSON
-collection_contents.json
-debug_state.json
+logs/*
+!logs/.gitkeep
